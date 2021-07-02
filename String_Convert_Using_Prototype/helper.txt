@@ -1,0 +1,93 @@
+//Object.create-> create child obj accessing parent obj
+
+const captain = {
+	name : "Ratan",
+	age : 36
+  };
+
+const player = Object.create(captain);
+console.log(player.age); //36 because js prototype
+
+//Prototype
+
+function test(){}
+console.dir(test) //displays an interactive list of the properties of the specified object
+
+//Prototype Modification
+
+     let user = {
+	name:"Med",
+	age :24,
+     }
+
+     //Constructor Function & 1st letter is capital	
+     function User(givenName){
+	this.name = givenName;
+     }
+
+     User.prototype.getName = function(){
+	return this.name;
+     }
+
+     let user1 = new User("wer");
+     console.log(user1);
+
+// Deleting a property from an object
+    delete captain.name;
+// Creating new object using Object keyword
+    let user = new Object() 
+// Used for cloning, merging obj
+   Object.assign(target,source)
+
+				// Array
+    var cars = ["qq","ww","ee"];
+    document.getElementById("demo").innerHTML = cars;
+
+    //shift, unshift, push, pop, splice, includes
+    function addCars(){
+        //cars.push("abc");
+        //cars.pop()
+        //cars.shift()
+        //cars.unshift("abc");
+        //cars.splice(2, 0, "Lemon", "Kiwi");
+        //cars.splice(2, 3,);
+        //document.getElementById("demo").innerHTML =  cars.includes("qq");
+        document.getElementById("demo").innerHTML = cars;
+    }
+
+    //array merging using concat
+    let abc = ["aa","ss","dd"];
+    let def = ["zz","xx","cc"];
+    const mergeArr = abc.concat(def);
+
+
+    cars.sort();//alphabetically
+    cars.reverse(); //reverse but have to sort first then work
+    //every ->all are true
+    //some ->any one is true
+    //slice(2,4)-> create array from index 2-3
+    //console.log(...numbers) spread operator->
+    //map()->print to all element
+    //filter() ->print to conditionally
+    //reduce()-> specific like sum calculate
+
+    //using foreach loop
+    /*
+        cars.forEach(function (car){
+            console.log(car);
+        });
+     */
+
+    //using for loop
+    /*
+    for(let i=0; i<cars.length; i++){
+        console.log(cars[i]);
+    }
+    */
+
+    //using for of loop
+    /*
+    for(let key of cars){
+        console.log(key);
+    }
+    */

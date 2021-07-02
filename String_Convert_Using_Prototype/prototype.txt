@@ -1,0 +1,167 @@
+//Object Create
+
+  //First Way
+    let user ={
+        name : "rfb",
+        roll : 40,
+        address : "Dhaka",
+        //object method which name is info
+        info : function(){
+            return `My name is ${this.name} roll is ${this.roll}`;
+        }
+    };
+
+//ByDefault All function are constructor in js
+
+    //Second Way
+    let p = function Person(name,age){
+        let person = { };
+        person.name = name;
+        person.age = age;
+
+        person.eat = function() {
+            console.log(`Eating`);
+        };
+        person.sleep = function() {
+            console.log(`Sleeping`);
+        };
+        return person;
+    }
+    const rahim = Person("rahim",25);
+
+
+    //Third Way(factory function)
+    let p = function Person(name,age){
+        let person = {
+            name : name, //or only name
+            age : age,  //or only age
+        };
+        person.eat = function() {
+            console.log(`Eating`);
+        };
+        person.sleep = function() {
+            console.log(`Sleeping`);
+        };
+        return person;
+    }
+    const rahim = Person("rahim",25);
+
+//Problem : when comes lot of persons, impossible to create lot of object for persons.
+//solution : Create common object with sharing method, then reffer
+
+const personMethods = {
+    eat(){
+	console.log(`Eating`);
+     },
+    sleep(){
+	console.log(`Sleeping`);
+     },
+};
+
+    function Person(name,age){
+        let person = { };
+        person.name = name;
+        person.age = age;
+        person.eat = personMethods.eat;
+        person.sleep = personMethods.sleep;
+        return person;
+    }
+
+//reffer or declear in 2 obj but stop it and use Object.create()
+
+const personMethods = {
+    eat(){
+	console.log(`Eating`);
+     },
+    sleep(){
+	console.log(`Sleeping`);
+     },
+};
+
+    function Person(name,age){
+        let person = Object.create(personMethods);
+        person.name = name;
+        person.age = age;
+        return person;
+    }
+	const rahim = Person("rahim",25);
+	rahim.eat();
+
+//But still there two object now use prototype
+
+    function Person(name,age){
+        let person = Object.create(Person.prototype);
+        person.name = name;
+        person.age = age;
+        return person;
+    }
+	const rahim = Person("rahim",25);
+	rahim.eat();
+
+    Person.prototype = {
+    	eat(){
+	   console.log(`Eating`);
+     	},
+    	sleep(){
+	   console.log(`Sleeping`);
+     	},
+     }
+
+//New keyword 
+    function Person(name,age){
+        //let this= Object.create(Person.prototype);
+        this.name = name; //person.name = name;
+        this.age = age;
+        //return this
+    }
+
+    Person.prototype = {
+    	eat(){
+	   console.log(`Eating`);
+     	},
+    	sleep(){
+	   console.log(`Sleeping`);
+     	},
+     }
+     const rahim = New Person("rahim",25);
+     rahim.eat();
+
+//Now Class
+
+     class person{
+	constructor(name,age){
+		this.name = name;
+		this.age = age;
+	}
+    	eat(){
+	   console.log(`Eating`);
+     	}
+    	sleep(){
+	   console.log(`Sleeping`);
+     	}
+
+     }
+     const rahim = New Person("rahim",25);
+     rahim.eat();
+
+//Array Prototype
+
+	let persons = []; //array 
+	let persons = new Array() //array
+	//child = persons, parent = Array
+	console.log(Array.prototype);
+	console.log(persons.push("Sakib")); //push come from prototype
+
+
+
+
+
+
+
+
+
+
+
+
+
+
